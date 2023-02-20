@@ -6,6 +6,8 @@ The objective of this study is to develop a new MLR models for predicting how ch
 ## Approach
 We created a chemical database by gathering relevant data from scientific literature and online chemical databases. The data was then cleaned and transformed to prepare it for analysis. To better understand the data, we applied exploratory data analysis (EDA) techniques such as scatter plots, clustering, correlation matrices, and PCA.
 
+![alt text](https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs10953-022-01214-7/MediaObjects/10953_2022_1214_Fig1_HTML.png?as=webp)
+
 Using the QSAR development platform QSARINS, we developed multilinear regression (MLR) models to predict the internal energy ($\Delta U_{OA}$) of neutral organic chemicals at different temperatures. We evaluated the use of Abraham descriptors, other molecular descriptors, and the $log_{10} K_{OA}$ at 25 °C as variables in different MLR equations.
 
 ## Conclusion 
