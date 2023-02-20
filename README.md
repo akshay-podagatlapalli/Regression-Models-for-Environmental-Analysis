@@ -1,2 +1,14 @@
-# ppLFERproj
-Python and R code used while developing various linear regression models
+# Developing Multi-Linear Regression (MLR) Models to Estimate How Chemicals Move Between Air and Organic Mediums at Different Temperatures  
+
+## Objective 
+The objective of this study is to develop a new MLR models for predicting how chemicals move between air and organic phases (blood, nasal cavities, lipids, etc...) at different temperatures using fewer parameters than earlier models. Specifically, we aim to estimate how temperature affects the behaviour of a chemical and how it moves between the two phases. We evaluated the use of several molecular [parameters/descriptors](https://www.sciencedirect.com/topics/medicine-and-dentistry/molecular-descriptor) for developing these MLR equations.
+
+## Approach
+We created a chemical database by gathering relevant data from scientific literature and online chemical databases. The data was then cleaned and transformed to prepare it for analysis. To better understand the data, we applied exploratory data analysis (EDA) techniques such as scatter plots, clustering, correlation matrices, and PCA.
+
+Using the QSAR development platform QSARINS, we developed multilinear regression (MLR) models to predict the internal energy ($\Delta U_{OA}$) of neutral organic chemicals at different temperatures. We evaluated the use of Abraham descriptors, other molecular descriptors, and the $log_{10} K_{OA}$ at 25 °C as variables in different MLR equations.
+
+## Conclusion 
+Our study resulted in the development of 5 new models that use fewer parameters than [earlier models](https://www.sciencedirect.com/science/article/abs/pii/S0040603108000403?via%3Dihub) for predicting the temperature dependence of the octanol-air partition ratio. The best performing model relies only on the $log_{10} K_{OA}$ at 25 °C and has similar or slightly improved performance relative to previous estimation techniques. Our work suggests that the ($\Delta U_{OA}$) of neutral organic chemicals can be reliably predicted using only the $log_{10} K_{OA}$ (a single parameter only) or a combination of $log_{10} K_{OA}$ and the solute’s hydrogen acidity A (two parameters).
+
+Overall, we created a comprehensive chemical database, performed data cleaning and transformation, applied EDA techniques, and developed MLR models to achieve our objectives. Our findings could help in the development of new environmental chemistry models and inform future research in this field.
