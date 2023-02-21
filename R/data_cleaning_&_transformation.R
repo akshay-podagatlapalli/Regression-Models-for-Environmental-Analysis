@@ -30,7 +30,8 @@ count_CT <- fil_ChemID %>%
   group_by(ChemID) %>%
   dplyr::summarise(n()) 
 
-# 
+# creating a new df with summary stats
+# for all the duplicate counts of the original dataset
 dupeCT <- fil_ChemID %>%
   find_duplicates(ChemID, Temp) %>%
   group_by(Temp, ChemID) %>%
@@ -40,15 +41,20 @@ dupeCT <- fil_ChemID %>%
   
 dupeCT <- ddply(dupeCT, "ChemID", numcolwise(sum))
 
+# creating a df with all the distinct records within the dataset 
 UniCT <- fil_ChemID %>%
   distinct(ChemID, Temp, .keep_all = TRUE) %>%
   dplyr::summarise(n())
 
+# Joining the duplicate df with the 
+# distinct df to identify records per primary key
 count_CT <- count_CT %>%
   inner_join(UniCT, by = c("ChemID" = "ChemID")) %>%
   dplyr::rename(unique_dps = `n().y`,inital_dps =`n().x`) %>%
   full_join(dupeCT, by = c("ChemID" = "ChemID"))
 
+# filtering out distinct records whose sample size 
+# is less than or equal to 3
 fil_Temp <- count_CT %>%
   dplyr::filter(`unique_dps` <= 3)
 
@@ -94,6 +100,7 @@ names(dUOA)[names(dUOA) == 'n()'] <- 'count'
   
 dUOA$`dUOA` <- dUOA$slope * 0.008314
 
+# write the data to a new spreadsheet 
 write_xlsx(
   dUOA,
   "C:/Users/Akshay/Documents/Research/dUOA data/Manuscript/Raw Data/2.0-dUOA Data.xlsx"
@@ -109,13 +116,14 @@ low_rd <- low_r %>%
   select(ChemID, R2) 
 low_rd <- semi_join(fil_CT, low_rd, by = c("ChemID" = "ChemID"))
 
-
+# plotting the data for primary keys with R^2 < 0.95 
 ggplot(low_rd,aes(x = `1/Temp`, y = ln_KOA)) +
   geom_point(aes(colour = factor(methID)), show.legend = FALSE) + 
   geom_smooth(method = 'lm', se = FALSE) + 
   geom_smooth(method = 'lm', aes(colour = factor(methID)), se = FALSE, show.legend = FALSE) +
   facet_wrap(~Chemical_Name, ncol = 6, nrow = 6, scales = "free", shrink = FALSE)
 
+# code to create the plots
 #ggsave("Plots.jpg", plot = last_plot(), device = "jpeg",
 #       path = "C:/Users/aksha/Documents/Research/dUOA data",
 #       scale = 1, width = 17, height = 21, units = "cm", dpi = 320,
