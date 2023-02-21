@@ -1,3 +1,15 @@
+# code perform regression, calculat the lineofbestfit
+# and create the corresponding scatterplots for each of the primary keys
+
+# every primary key has 3 or more datapoints with different temperature values
+# and different "log KOA" value at each temperature point. 
+
+# the "log KOA" is plotted against the reciprocal of the temperature value 
+# to identify any descrepanies in the experimental values of the KOA value. 
+
+# these plots are used to investigate what is wrong with a given record for
+# each of the primary keys. 
+
 import numpy as np
 import pandas as pd
 from scipy import stats
