@@ -15,7 +15,7 @@ We created a chemical database by gathering relevant data from scientific litera
 
 
 ![Figure 3](https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs10953-022-01214-7/MediaObjects/10953_2022_1214_Fig3_HTML.png?as=webp)
-**Figure 3**: Data estimated using the models plotted against the original values for the training and validation datasets. The dashed and dotted lines indicate devation by $\pm$ 5 units and 10 units respectively. 
+**Figure 3**: Data estimated using the models plotted against the original values for the training and validation datasets.
 
 Using the QSAR development platform QSARINS, we developed multilinear regression (MLR) models to predict the internal energy ($\Delta U_{OA}$) of neutral organic chemicals at different temperatures. We evaluated the use of Abraham descriptors, other molecular descriptors, and the $log_{10} K_{OA}$ at 25 °C as variables in different MLR equations.
 
