@@ -7,26 +7,30 @@ library(hablar)
 library(data.table)
 library(writexl)
 
+# setting the directory 
 setwd("C:/Users/Akshay/Documents/Research/dUOA data/Manuscript/Raw Data/")
 
-#selecting the data
+# reading in the data
 koa_data <- read_excel("1.0-KOA and dHOA Data.xlsx", sheet="KOA Data")
 
+# grouping the data by the primary key 
 count_CT_01 <- koa_data%>%
   group_by(ChemID) %>%
   dplyr::summarise(n())
 
-#selecting the columns of interest
-#filtering out chemicals with <= 3 data-points
+# selecting the columns of interest
+# filtering out records with >3 datapoints per primary key
 fil_ChemID <- koa_data %>%
   select(ChemID, Chemical_Name, Cas_No, Temp, log_KOA, methID, Citation) %>%
   group_by(ChemID) %>%
   filter(n() > 3) 
 
+# creating a df with the summary stats
 count_CT <- fil_ChemID %>%
   group_by(ChemID) %>%
   dplyr::summarise(n()) 
 
+# 
 dupeCT <- fil_ChemID %>%
   find_duplicates(ChemID, Temp) %>%
   group_by(Temp, ChemID) %>%
