@@ -15,6 +15,7 @@ setwd(
 )
 
 QSAR_data <- read_excel("PaDEL Descriptors_Entire Dataset_Revised.xlsx")
+
 #pubchem_data <- QSAR_data[, c(3, 1304:2184)]
 pubchem_data <- QSAR_data[, c(2, 1305:2185)]
 
